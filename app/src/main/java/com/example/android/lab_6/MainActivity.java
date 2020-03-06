@@ -13,7 +13,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class MainActivity extends FragmentActivity {
 
     //somewhere in australia
-    private final LatLng mDestinationLatLng = new LatLng(-33.85, 151.21);
+    private final LatLng mDestinationLatLng = new LatLng(43.07, 89.4);
     private GoogleMap mMap;
 
     @Override
