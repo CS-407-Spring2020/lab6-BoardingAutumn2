@@ -23,7 +23,7 @@ public class MainActivity extends FragmentActivity {
     private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 12; //can be any number
 
     //somewhere in australia
-    private final LatLng mDestinationLatLng = new LatLng(43.07, 89.4);
+    private final LatLng mDestinationLatLng = new LatLng(43.07, -89.4);
     private GoogleMap mMap;
 
     @Override
@@ -60,6 +60,11 @@ public class MainActivity extends FragmentActivity {
             mFusedLocationProviderClient.getLastLocation()
                     .addOnCompleteListener(this, task -> {
                         Location mLastKnownLocation = task.getResult();
+                        LatLng mLastLatLng = new LatLng(mLastKnownLocation.getLatitude(), mLastKnownLocation.getLongitude());
+                        mMap.addMarker(new MarkerOptions()
+                                .position(mLastLatLng)
+                                .title("Destination"));
+                        displayMyLocation();
                         if (task.isSuccessful() && mLastKnownLocation != null){
                             mMap.addPolyline(new PolylineOptions().add(
                                     new LatLng(mLastKnownLocation.getLatitude(), mLastKnownLocation.getLongitude()),
